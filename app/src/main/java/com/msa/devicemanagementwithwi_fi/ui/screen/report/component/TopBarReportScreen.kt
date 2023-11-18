@@ -43,6 +43,9 @@ import com.msa.devicemanagementwithwi_fi.ui.theme.Bluelight
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBarReportScreen() {
+    var hideDatePicker by remember {
+        mutableStateOf(true)
+    }
     val context = LocalContext.current
     val coffeeDrinks = arrayOf("دما", "رظوبت", "آمونیاک")
     var expanded by remember { mutableStateOf(false) }
@@ -162,18 +165,23 @@ fun TopBarReportScreen() {
                         )
                     )
             ) {
+
                 Row(
                     modifier = Modifier
                         .weight(1f)
                         .padding(5.dp)
                         .padding(top = 5.dp),
                 ) {
-                    Button(onClick = { /*TODO*/ }) {
-                        
+                    Button(onClick = { hideDatePicker = false }) {
+                        Text(text = "دریافت اطلاعات")
                     }
                 }
             }
         }
+    }
+    if (!hideDatePicker) {
+
+
     }
 }
 

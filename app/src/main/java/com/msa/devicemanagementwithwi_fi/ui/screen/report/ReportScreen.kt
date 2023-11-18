@@ -9,8 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import co.yml.charts.common.utils.DataUtils
-import com.msa.devicemanagementwithwi_fi.ui.screen.report.component.StraightLinechart
+import com.msa.devicemanagementwithwi_fi.ui.screen.report.component.LineChartScreen
 import com.msa.devicemanagementwithwi_fi.ui.screen.report.component.TopBarReportScreen
 
 @Composable
@@ -25,7 +24,7 @@ fun ReportScreen() {
             modifier = Modifier
                 .padding(it)
         ){
-            StraightLinechart(DataUtils.getLineChartData(50, maxRange = 200))
+            LineChartScreen()
         }
     }
 }
