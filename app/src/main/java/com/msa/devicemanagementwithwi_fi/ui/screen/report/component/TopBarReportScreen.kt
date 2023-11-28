@@ -4,6 +4,7 @@ package com.msa.devicemanagementwithwi_fi.ui.screen.report.component
 
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -37,14 +38,19 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.msa.calendar.CalendarScreen
 import com.msa.devicemanagementwithwi_fi.ui.theme.BlueDark
 import com.msa.devicemanagementwithwi_fi.ui.theme.Bluelight
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBarReportScreen() {
+
     var hideDatePicker by remember {
         mutableStateOf(true)
+    }
+    var setDate by remember {
+        mutableStateOf("دریافت اطلاعات")
     }
     val context = LocalContext.current
     val coffeeDrinks = arrayOf("دما", "رظوبت", "آمونیاک")
@@ -82,7 +88,11 @@ fun TopBarReportScreen() {
                     modifier = Modifier
                         .weight(1f)
                         .padding(5.dp)
-                        .padding(top = 5.dp),
+                        .padding(top = 5.dp)
+                        .clickable {
+                            hideDatePicker = false
+                        }
+                    ,
                 ) {
                     Icon(
                         modifier = Modifier
@@ -95,7 +105,7 @@ fun TopBarReportScreen() {
                     Text(
                         modifier = Modifier
                             .padding(5.dp),
-                        text = "انتخاب تاریخ",
+                        text = setDate,
                         color = Color.White,
                         fontFamily = FontFamily.Serif
 
@@ -172,7 +182,9 @@ fun TopBarReportScreen() {
                         .padding(5.dp)
                         .padding(top = 5.dp),
                 ) {
-                    Button(onClick = { hideDatePicker = false }) {
+                    Button(onClick = {
+
+                    }) {
                         Text(text = "دریافت اطلاعات")
                     }
                 }
@@ -180,7 +192,10 @@ fun TopBarReportScreen() {
         }
     }
     if (!hideDatePicker) {
-
+        CalendarScreen(
+            onDismiss = { hideDatePicker = true },
+            onConfirm = { setDate = it }
+        )
     }
 }
 

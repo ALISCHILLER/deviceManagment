@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Device management with Wi-Fi"
 include(":app")
- 
+
+include(":calendar")
