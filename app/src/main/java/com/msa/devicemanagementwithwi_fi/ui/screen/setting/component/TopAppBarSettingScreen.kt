@@ -45,7 +45,9 @@ import com.msa.devicemanagementwithwi_fi.ui.theme.Diamond
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun TopAppBarSettingScreen() {
+fun TopAppBarSettingScreen(
+
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()

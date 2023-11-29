@@ -85,6 +85,10 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
 
+    //ktor
+    implementation("io.ktor:ktor-network:2.3.6")
+    implementation("io.ktor:ktor-network-tls:2.3.6")
+
     //navigation
     implementation("androidx.navigation:navigation-compose:2.7.5")
 

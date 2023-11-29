@@ -31,6 +31,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.msa.devicemanagementwithwi_fi.ui.activity.MainViewModel
 import com.msa.devicemanagementwithwi_fi.ui.device_navigator.bottomNav.AnimatedNavigationBar
 import com.msa.devicemanagementwithwi_fi.ui.device_navigator.bottomNav.animation.balltrajectory.Parabolic
 import com.msa.devicemanagementwithwi_fi.ui.device_navigator.bottomNav.animation.indendshape.Height
@@ -42,7 +43,9 @@ import com.msa.devicemanagementwithwi_fi.ui.theme.Pink40
 
 
 @Composable
-fun DeiceNavigator() {
+fun DeiceNavigator(
+    mainViewModel: MainViewModel
+) {
 
     val navigationBarItem = remember {
         NavigationBarItems.values()
@@ -68,7 +71,7 @@ fun DeiceNavigator() {
                 barColor = Pink40,
                 ballColor = Pink40
             ) {
-                navigationBarItem.forEachIndexed() { index ,it->
+                navigationBarItem.forEachIndexed() { index, it ->
 
                     Box(
                         modifier = Modifier
@@ -111,11 +114,11 @@ fun DeiceNavigator() {
             modifier = Modifier.padding(bottom = bottomPadding)
         ) {
             composable(route = Route.SettingScreen.route) {
-                SettingScreen()
+                SettingScreen(mainViewModel)
             }
 
             composable(route = Route.ReportScreen.route) {
-                ReportScreen()
+                ReportScreen(mainViewModel)
             }
 
         }
@@ -126,7 +129,8 @@ fun DeiceNavigator() {
 @Preview
 @Composable
 fun DeiceNavigatorPreview() {
-    DeiceNavigator()
+    MainViewModel()
+    DeiceNavigator(MainViewModel())
 }
 
 @Composable
@@ -138,6 +142,7 @@ fun OnBackClickStateSaver(navController: NavController) {
         )
     }
 }
+
 private fun navigateToTab(navController: NavController, route: String) {
     navController.navigate(route) {
         navController.graph.startDestinationRoute?.let { screen_route ->

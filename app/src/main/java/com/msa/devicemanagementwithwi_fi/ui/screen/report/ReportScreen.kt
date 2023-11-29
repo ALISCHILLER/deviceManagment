@@ -9,11 +9,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.msa.devicemanagementwithwi_fi.ui.activity.MainViewModel
 import com.msa.devicemanagementwithwi_fi.ui.screen.report.component.LineChartScreen
 import com.msa.devicemanagementwithwi_fi.ui.screen.report.component.TopBarReportScreen
 
 @Composable
-fun ReportScreen() {
+fun ReportScreen(
+    mainViewModel: MainViewModel
+) {
     Scaffold(
         topBar = {
             TopBarReportScreen()
@@ -32,5 +35,5 @@ fun ReportScreen() {
 @Composable
 @Preview
 fun ReportScreenPreview() {
-    ReportScreen()
+    ReportScreen(MainViewModel())
 }
